@@ -91,7 +91,7 @@
                 echo "<td>" . $row['id'] . "</td>";
                 echo "<td>" . $row['product_name'] . "</td>";
                 echo "<td>" . $row['description'] . "</td>";
-                echo "<td>$" . $row['price'] . "</td>";
+                echo "<td>₹" . $row['price'] . "</td>";
                 echo "<td>" . $row['created_at'] . "</td>";
                 echo "<td>" . $row['updated_at'] . "</td>";
                 echo "<td class='actions'>";
