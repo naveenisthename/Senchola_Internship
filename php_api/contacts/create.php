@@ -5,7 +5,7 @@ header('Content-Type:application/json');
 header('Access-Control-Allow-Method:POST');
 header('Access-Control-Allow-Headers:Content-type,Access-Control-Allow-Headers,Authorization,x-Request-with');
 
-include('funtion.php');
+include('function.php');
 
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 
