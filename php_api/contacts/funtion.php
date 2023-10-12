@@ -52,6 +52,7 @@ function storeContact($contactInput)
         }
     }
 }
+
 function getContact_details()
 {
     global $conn;
@@ -86,4 +87,47 @@ function getContact_details()
         ];
     header("HTTP/1.0 500 Internal servor error");
     return json_encode($data);
+}
+
+function getContact($contactParams)
+{
+    global $conn;
+
+    if ($contactParams['id'] == null) {
+        return error422('Enter your contact id');
+    }
+
+    $ContactId = mysqli_real_escape_string($conn, $contactParams['id']);
+    $query = "SELECT * FROM contacts where id='$ContactId' LIMIT 1";
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+
+        if (mysqli_num_rows($result) == 1) {
+
+            $res = mysqli_fetch_assoc($result);
+
+            $data = [
+                'status' => 200,
+                'message' => 'Contact Detail Fetched Successfully',
+                'data' => $res
+            ];
+            header("HTTP/1.0 200 Success ");
+            return json_encode($data);
+        } else {
+            $data = [
+                'status' => 404,
+                'message' => 'No Contact found',
+            ];
+            header("HTTP/1.0 404 No Contact found");
+            return json_encode($data);
+        }
+    } else {
+        $data = [
+            'status' => 500,
+            'message' => 'Internal servor error',
+        ];
+        header("HTTP/1.0 500 Internal servor error");
+        return json_encode($data);
+    }
 }
