@@ -11,7 +11,7 @@ function error422($message)
     header("HTTP/1.0 422 Unprocessable entity");
     echo json_encode($data);
 }
-function storeContact($contactInput)
+function storeContact($contactInput) //CREATE
 {
     global $conn;
 
@@ -53,7 +53,7 @@ function storeContact($contactInput)
     }
 }
 
-function getContact_details()
+function getContact_details() //READ ALL
 {
     global $conn;
 
@@ -89,7 +89,7 @@ function getContact_details()
     return json_encode($data);
 }
 
-function getContact($contactParams)
+function getContact($contactParams) //READ BY ID
 {
     global $conn;
 
