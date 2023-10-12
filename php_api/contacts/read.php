@@ -10,11 +10,11 @@ include('funtion.php');
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
 if ($requestMethod == "GET") {
-    if (isset($_GET['id'])) {
+    if (isset($_GET['id'])) {  //READ BY ID
         $contact = getContact($_GET);
         echo $contact;
     } else {
-        $contact_details = getContact_details();
+        $contact_details = getContact_details(); //READ ALL
         echo $contact_details;
     }
 } else {
