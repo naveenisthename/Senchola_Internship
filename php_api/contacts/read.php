@@ -10,8 +10,13 @@ include('funtion.php');
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
 if ($requestMethod == "GET") {
-    $contact_details = getContact_details();
-    echo $contact_details;
+    if (isset($_GET['id'])) {
+        $contact = getContact($_GET);
+        echo $contact;
+    } else {
+        $contact_details = getContact_details();
+        echo $contact_details;
+    }
 } else {
     $data = [
         'status' => 405,
